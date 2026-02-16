@@ -24,18 +24,29 @@ const Products = ({ filter }) => {
 
   return (
     <div className="h-full flex flex-col items-center gap-y-10">
-      <h1 className="text-4xl font-bold tracking-tight">Products</h1>
+      <h1 className="text-4xl font-bold tracking-tight" >{delayedData ? `Results for ${delayedData}` : "All Product"}</h1>
 
-      <ul className="w-full max-w-xl">
-        {results.map((product, index) => (
-          <li
-            className="border rounded-sm px-4 py-2 mb-4 last:mb-0"
-            key={index}
-          >
-            {product}
-          </li>
-        ))}
-      </ul>
+
+      {
+        results.length === 0 ? (
+          <div>
+            No result found for {delayedData}
+          </div>
+        ) : (
+          <ul className="w-full max-w-xl">
+            {results.map((product, index) => (
+              <li
+                className="border rounded-sm px-4 py-2 mb-4 last:mb-0"
+                key={index}
+              >
+                {product}
+              </li>
+            ))}
+          </ul>
+
+        )
+
+      }
     </div>
   );
 };
