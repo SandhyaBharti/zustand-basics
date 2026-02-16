@@ -40,11 +40,16 @@
 // export default App
 
 // Search
+import Products from "./components/products";
 import Search from "./components/search";
+import { useState } from "react";
 const App = () => {
+  const [query, setQuery] = useState("");
+
   return (
-    <div className='flex w-full h-screen justify-center items-start m-10'>
-      <Search />
+    <div className='flex flex-col gap-12 w-full h-screen items-center py-10'>
+      <Search setQuery={setQuery} />
+      <Products filter={query} />
     </div>
   )
 }
